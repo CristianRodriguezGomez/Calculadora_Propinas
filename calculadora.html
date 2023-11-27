@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Calculadora de Propinas</title>
+
+    <style>
+        body {
+          font-family: Arial, sans-serif;
+          background-color: #241616;
+          margin: 0;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100vh;
+        }
+        .calculator {
+          background-color: #5d4c4c;
+          border-radius: 8px;
+          box-shadow: 0 0 10px rgba(11, 11, 11, 0.1);
+          padding: 40px;
+          text-align: center;
+          max-width: 400px;
+          width: 100%;
+        }
+        h2 {
+          margin-bottom: 30px;
+          color: #007bff;
+        }
+        input[type="number"] {
+          width: calc(100% - 20px);
+          padding: 10px;
+          margin-bottom: 20px;
+          border-radius: 4px;
+          border: 1px solid #b7a9a9;
+        }
+        button {
+          padding: 12px 30px;
+          background-color: #4d75a1;
+          color: #fff;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+          transition: background-color 0.3s ease;
+        }
+        button:hover {
+          background-color: #5d85b0;
+        }
+        p {
+          font-size: 18px;
+          margin-top: 20px;
+          color: #f0ecec;
+        }
+      </style>
+
+</head>
+<body>
+  <div class="calculator">
+    <h2>$Calculadora de Propinas$</h2>
+    <label for="billAmount">Monto Total de la Factura:</label>
+    <input type="number" id="billAmount" placeholder="Ingrese el monto total"><br>
+    <label for="tipPercentage">Porcentaje de Propina:</label>
+    <input type="number" id="tipPercentage" placeholder="Ingrese el porcentaje"><br>
+    <button onclick="calculateTip()">Calcular Propina</button>
+    <p id="tipAmount"></p>
+  </div>
+
+  <script>
+    function calculateTip() {
+      // Obtener el valor de la factura y el porcentaje de propina
+      var billAmount = parseFloat(document.getElementById('billAmount').value);
+      var tipPercentage = parseFloat(document.getElementById('tipPercentage').value);
+
+      // Calcular la propina
+      var tipAmount = (billAmount * (tipPercentage / 100)).toFixed(2);
+
+      // Mostrar el resultado
+      document.getElementById('tipAmount').innerText = `Propina a dejar: $${tipAmount}`;
+    }
+  </script>
+</body>
+</html>
